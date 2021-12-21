@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info per book</title>
+    <!--a little style to the table> -->
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 35%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 4px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<!-- Vi can access this html page from http:localhost:5002/booksWeb/1 -->
+<table >
+    <thead ><tr><th bgcolor="#faebd7" colspan="2"><h3 align="center">Info per Book</h3></th></tr></thead >
+    <tbody>
+    <tr ><td>Book ID:</td><td align="left">{{book.book_id}}</td></tr>
+    <tr ><td>Title:</td><td align="left">{{book.name}}</td></tr>
+    <tr><td>Price:</td><td align="left">{{book.price}}</td></tr>
+    <tr><td>Author:</td><td align="left">{{book.author}}</td></tr>
+    </tbody >
+</table>
+</body>
+</html>
