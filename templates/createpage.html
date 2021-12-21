@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <!--a little style to the table> -->
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 35%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 4px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<!-- Vi can access this html page from http:localhost:5002/booksWeb/create   -->
+<form action='' method = "POST">
+    <table >
+        <thead ><tr><th bgcolor="#faebd7" colspan="2"><h3 align="center">Add New Book</h3></th></tr></thead >
+        <tbody>
+        <tr><td>Book ID: </td><td><input type = "integer" name = "book_id" /></td></tr>
+        <tr><td>Title: </td><td><input type = "text" name = "name" /></td></tr>
+        <tr><td>Price:</td><td><input type = "integer" name = "price" /></td></tr>
+        <tr><td>Author:</td><td><input type = "text" name = "author" /></td></tr>
+        <tr><th>    </th><th><input type = "submit" value = "Submit" /></th></tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
