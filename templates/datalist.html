@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all books</title>
+    <!--a little style to the table> -->
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 4px;
+        }
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 0px;
+            spacing: 0px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        a:link, a:visited {
+            background-color: darkgreen;
+            color: white;
+            padding: 4px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover, a:active {
+            background-color: darkblue;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<table align="center">
+    <thead ><tr><th bgcolor="#faebd7" colspan="6"><h3 align="center">List of all books</h3></th></tr></thead >
+
+    <tr >
+        <th bgcolor="#a9a9a9" colspan="6" ><h4 align="center"> Add New Book -->
+        <a href='/booksWeb/create'>Create</a></h4></th>
+    </tr>
+    <tbody>
+    <tr>
+        <td bgcolor= #a9a9a9>Book ID </td>
+        <td bgcolor= #a9a9a9>Title </td>
+        <td bgcolor= #a9a9a9> Price </td>
+        <td bgcolor= #a9a9a9> Author </td>
+
+        <td bgcolor= #a9a9a9> Update </td>
+        <td bgcolor= #a9a9a9> Delete </td>
+    </tr>
+    { % for book in books % }
+        <tr>
+            <td>{{book.book_id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.author}}</td>
+            <td><a href='/booksWeb/{{book.book_id}}/update'>Update</a></td>
+            <td><a href='/booksWeb/{{book.book_id}}/delete'>Delete</a></td>
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
