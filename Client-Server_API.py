@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, redirect
 from flask_restful import Api, Resource, reqparse, abort
-#import flask_restful
 from models import db, BookModel
 
 app = Flask(__name__)
@@ -11,16 +10,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
 db.init_app(app)
 
+#   will be executed once, before ant user arrives to the site,
+#   before the first request arrives
 @app.before_first_request
 def create_table():
     db.create_all()
-# now coding the create view
-#The Create view should be able to do the following:
-#When the Client goes to this page (GET method), it should display a Form to get the Client’s Data.
-#On Submission (POST method), it should save the Client’s data in the BookModel Database.
-
-
-@app.route('/booksWeb/create' , methods = ['GET','POST'])
+#   now coding the create view
+#   The Create view should be able to do the following:
+#   When the Client goes to this page (GET method), it should display a Form to get the Client’s Data.
+#   On Submission (POST method), it should save the Client’s data in the BookModel Database.
+@app.route('/booksWeb/create' , methods = ['GET','POST']) #map the specific URL with the associated function
 def create():
     if request.method == 'GET':
         return render_template('createpage.html')
@@ -37,8 +36,6 @@ def create():
         books = BookModel.query.all()
         return render_template('datalist.html',books = books)
 
-
-
 #now coding the retrieve views
 #Here we will have 2 views:
 # First to display the list of Books.
@@ -50,9 +47,9 @@ def RetrieveDataList():
 
 
 #SecondtTo display the information of a single Book.
-"""--- BookModel.query.filter_by(name = name).first() 
-will return the first Book with Name = name in the DB 
-or return None if the Book with that nme does not exist. ---"""
+"""--- BookModel.query.filter_by(book_id = book_id).first() 
+will return the first Book with Book Id = book_id in the DB 
+or return "Book doest not exist" if the Book with that nme does not exist. ---"""
 @app.route('/booksWeb/<book_id>')
 def RetrieveSingleBook(book_id):
     book = BookModel.query.filter_by(book_id = book_id).first()
@@ -103,7 +100,6 @@ def delete(book_id):
 
 #Classes to work with json resourses and postman
 class BooksView(Resource):
-
     parser = reqparse.RequestParser()
     parser.add_argument('book_id',
                         type=str,
